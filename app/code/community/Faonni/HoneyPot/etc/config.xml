@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Faonni
+ *  
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade module to newer
+ * versions in the future.
+ * 
+ * @package     Faonni_HoneyPot
+ * @copyright   Copyright (c) 2015 Karliuka Vitalii(karliuka.vitalii@gmail.com) 
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+	<modules>
+		<Faonni_HoneyPot>
+			<version>1.1.0</version>
+		</Faonni_HoneyPot>
+	</modules>
+	<global>
+		<blocks>
+			<faonni_honeypot>
+				<class>Faonni_HoneyPot_Block</class>
+			</faonni_honeypot>		
+		</blocks>	
+		<helpers>
+			<faonni_honeypot>
+				<class>Faonni_HoneyPot_Helper</class>
+			</faonni_honeypot>
+		</helpers>
+		<models>
+			<faonni_honeypot>
+				<class>Faonni_HoneyPot_Model</class>
+			</faonni_honeypot>	
+		</models>
+		<events>
+			<controller_action_predispatch_customer_account_loginPost>
+				<observers>
+					<faonni_honeypot_login>
+						<class>faonni_honeypot/observer</class>
+						<method>login</method>
+					</faonni_honeypot_login>					
+				</observers>
+			</controller_action_predispatch_customer_account_loginPost>	
+			<controller_action_predispatch_customer_account_createpost>
+				<observers>
+					<faonni_honeypot_create>
+						<class>faonni_honeypot/observer</class>
+						<method>create</method>
+					</faonni_honeypot_create>					
+				</observers>
+			</controller_action_predispatch_customer_account_createpost>
+            <controller_action_predispatch_customer_account_forgotpasswordpost>
+				<observers>
+					<faonni_honeypot_forgotpassword>
+						<class>faonni_honeypot/observer</class>
+						<method>forgotpassword</method>
+					</faonni_honeypot_forgotpassword>					
+				</observers>
+            </controller_action_predispatch_customer_account_forgotpasswordpost>			
+        </events> 		
+	</global>
+    <frontend>	
+        <layout>
+            <updates>
+                <faonni_honeypot module="faonni_honeypot">
+                    <file>faonni/honeypot.xml</file>
+                </faonni_honeypot>
+            </updates>
+        </layout>	
+    </frontend>	
+</config> 
